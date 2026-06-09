@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import numpy as np
 from math import *
 import argparse
@@ -329,9 +326,6 @@ def main():
    
 if __name__ =="__main__":
     main()
-
-
-# In[ ]:
 
 
 
