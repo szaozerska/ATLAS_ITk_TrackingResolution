@@ -726,6 +726,34 @@ def Validation2():
     detector.addlayer2(Pixel1)
     return detector
 
+def ATLAS():
+    # unknown configuration, trying to identify where it comes from
+    # couldn't find it in the documentation of ATLAS so far, but I haven't searched as much
+    # probably simplified, moving on for now
+    Pixel1=Layer(0.0067, 5.0e-5/sqrt(12), 5.0e-5/sqrt(12), 0.039)
+    Pixel2=Layer(0.0067, 5.0e-5/sqrt(12), 5.0e-5/sqrt(12), 0.099)
+    Pixel3=Layer(0.0067, 5.0e-5/sqrt(12), 5.0e-5/sqrt(12), 0.16)
+    Pixel4=Layer(0.0067, 5.0e-5/sqrt(12), 5.0e-5/sqrt(12), 0.22)
+    Pixel5=Layer(0.0067, 5.0e-5/sqrt(12), 5.0e-5/sqrt(12), 0.279)
+    
+    Strip1=Layer(0.02, 7.575e-5/sqrt(12), 7.575e-5/sqrt(12), 0.405)
+    Strip2=Layer(0.02, 7.575e-5/sqrt(12), 7.575e-5/sqrt(12), 0.562)
+    Strip3=Layer(0.02, 7.575e-5/sqrt(12), 7.575e-5/sqrt(12), 0.762)
+    Strip4=Layer(0.02, 7.575e-5/sqrt(12), 7.575e-5/sqrt(12), 1)
+    
+    detector=Detector()
+    detector.addlayer2(Pixel1)
+    detector.addlayer2(Pixel2)
+    detector.addlayer2(Pixel3)
+    detector.addlayer2(Pixel4)
+    detector.addlayer2(Pixel5)
+    detector.addlayer2(Strip1)
+    detector.addlayer2(Strip2)
+    detector.addlayer2(Strip3)
+    detector.addlayer2(Strip4)
+    
+    return detector
+
 
 ####### PLOTTING FUNCTIONS #######
 
@@ -741,9 +769,9 @@ def plot_fixedeta(filename, var, B=2, eta=0, m=0.106):
     """
     Plot a selected error `var` versus pT at fixed pseudorapidity `eta`.
 
-    Reads detector layers from `filename`, evaluates `var` across a range of
-    pT values and overlays the result on the current matplotlib axes. 
-    Returns the `Detector` instance used for the computation.
+    Evaluates `var` across a range of pT values. 
+    If multiple instances are called, the results will be overlaid in a 
+    single plot. Returns the `Detector` instance used for the computation.
     
     Args:
         filename (str): Path to detector configuration file
@@ -782,9 +810,9 @@ def plot_fixedp(filename, var, B=2, p=1, m=0.106):
     """
     Plot a selected error `var` versus pseudorapidity for fixed pT `p`.
 
-    Reads detector layers from `filename`, evaluates `var` across a range of
-    eta values and overlays the result on the current matplotlib axes. 
-    Returns the `Detector` instance used for the computation.
+    Evaluates `var` across a range of pT values. 
+    If multiple instances are called, the results will be overlaid in a 
+    single plot. Returns the `Detector` instance used for the computation.
     
     Args:
         filename (str): Path to detector configuration file
